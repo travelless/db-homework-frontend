@@ -35,7 +35,7 @@
           :d="trackPath"
           :stroke="stroke"
           fill="none"
-          :stroke-linecap="strokeLinecap"
+          stroke-linecap="round"
           :stroke-width="percentage ? relativeStrokeWidth : 0"
           :style="circlePathStyle"></path>
       </svg>
@@ -72,10 +72,6 @@
       strokeWidth: {
         type: Number,
         default: 6
-      },
-      strokeLinecap: {
-        type: String,
-        default: 'round'
       },
       textInside: {
         type: Boolean,
@@ -216,7 +212,7 @@
           if (typeof seriesColor === 'string') {
             return {
               color: seriesColor,
-              percentage: (index + 1) * span
+              progress: (index + 1) * span
             };
           }
           return seriesColor;

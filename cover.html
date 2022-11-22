@@ -9,35 +9,109 @@
 <body>
   <div id="cover">
     <el-tabs>
-      <div class="form">
-        <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-          <el-form-item label="姓名" prop="name">
-            <el-input  v-model="form.name" autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item label="性别" prop="sex">
-            <el-input v-model="form.sex" autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item label="身份证号" prop="id">
-            <el-input v-model="form.id"></el-input>
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary">提交</el-button>
-            <el-button @click="resetForm('form')">重置</el-button>
-          </el-form-item>
+      <el-tab-pane label="核酸预约" name="first">
+        <el-form status-icon :model="bookForm" :rules="bookRules" ref="bookForm" label-width="100px" class="form" >
+          <el-row class="formTitle">
+              核酸预约信息表
+          </el-row>
+          <el-row>
+            <!-- 姓名 -->
+            <el-col :span="12">
+              <el-form-item label="姓名" prop="name">
+                <el-input  v-model="bookForm.name"></el-input>
+              </el-form-item>
+            </el-col>
+            <!-- 电话号码 -->
+            <el-col :span="12">
+              <el-form-item label="电话号码" prop="phone">
+                <el-input v-model="bookForm.phone" maxlength="11"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <!-- 身份证号 -->
+            <el-col :span="12">
+              <el-form-item label="身份证号" prop="id">
+                <el-input v-model="bookForm.id" maxlength="18"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <!-- 预约地点 -->
+            <el-col :span="12">
+              <el-form-item label="预约地点" prop="checkPlace">
+                <el-select v-model="bookForm.checkPlace" placeholder="请选择">
+                  <el-option
+                    v-for="item in checkPlaces"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+            </el-col>
+            <!-- 核酸检测时间 -->
+            <el-col :span="12">
+              <el-form-item label="预约时间" prop="checkTime">
+                <el-select v-model="bookForm.checkTime" placeholder="请选择">
+                  <el-option
+                    v-for="item in checkTimes"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <!-- 家庭住址 -->
+            <el-col :span="18">
+              <el-form-item label="家庭住址" prop="live">
+                <el-input v-model="bookForm.live"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <!-- 提交按钮 -->
+            <el-col :offset="4" :span="3">
+              <el-form-item>
+                <el-button type="primary">提交</el-button>
+              </el-form-item>
+            </el-col>
+            <el-col :offset="3" :span="3">
+              <el-form-item>
+                <el-button @click="resetForm('bookForm')">重置</el-button>
+              </el-form-item>
+            </el-col>
+          </el-row>
         </el-form>
-      </div>
-      <el-tab-pane label="信息注册" name="first">
-        
       </el-tab-pane>
+
+
       <el-tab-pane label="核酸查询" name="second">
-        <!-- <div class="form">
-      
-        </div> -->
-      </el-tab-pane>
-      <el-tab-pane label="核酸预约" name="third">
-        <div class="form">
-      
-        </div>
+        <el-form status-icon :model="bookForm"  ref="inquireForm" label-width="100px" class="form" >
+          <el-row class="formTitle">
+            核酸结果查询
+          </el-row>
+          <el-row>
+            <!-- 姓名 -->
+            <el-col :span="12">
+              <el-form-item label="姓名" prop="name">
+                <el-input  v-model="bookForm.name"></el-input>
+              </el-form-item>
+            </el-col>
+            <!-- 电话号码 -->
+            <el-col :span="12">
+              <el-form-item label="身份证号" prop="id">
+                <el-input v-model="bookForm.phone" maxlength="18"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row class="formTitle">
+            结果如下
+          </el-row>
+        </el-form>
       </el-tab-pane>
     </el-tabs>
     
@@ -45,16 +119,25 @@
 </body>
 </html>
 <style>
-*{
-  margin: 0;
-  padding: 0;
-}
 .form{
   padding: 5vh;
   width: 50%;
   margin-left: 25%;
   margin-top: 10vh;
   box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+}
+.formTitle{
+  text-align: center;
+  margin-bottom: 5%;
+  font-size: larger;
+  font-weight: bold;
+}
+.button{
+  position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 }
 </style>
 <script src="js/vue.js"></script>
@@ -65,18 +148,49 @@
 <script>
   new Vue({
           el:"#cover",
+          props: {
+          },
           data() {
             return {
-              activeName: 'second',
-              form: {
+              bookRules:{
+                name:{required: true,message: "请输入用户名称",trigger: "change"},
+                phone:{required: true,message: "请输入电话号码",trigger: "change"},
+                id:{required: true,message: "请输入身份证号",trigger: "change"},
+                checkPlace:{required: true,message: "请选择检测点",trigger: "change"},
+                checkTime:{required: true,message: "请选择检测时段",trigger: "change"},
+                live:{required: true,message: "请输入家庭住址",trigger: "change"}
+              },
+              inquireForm:{
+                name:'',
+                id:''
+              },
+              bookForm: {
                 name:'',
                 phone:'',
                 id:'',
                 checkPlace:'',
                 checkTime:'',
-                isDanger:false
-              }
-            };
+                isDanger:false,
+                live:''
+              },
+              checkPlaces:[{
+                value:'value1',
+                label:'地点1'
+              }],
+              checkTimes:[{
+                value:'下午1：30 - 3：30',
+                label:'下午1：30 - 3：30'
+              },{
+                value:'下午3：30 - 5：30',
+                label:'下午3：30 - 5：30'
+              },{
+                value:'晚上6：00 - 8：00',
+                label:'晚上6：00 - 8：00'
+              },{
+                value:'晚上8：00 - 10：00',
+                label:'晚上8：00 - 10：00'
+              }]
+            }
           },
           methods: {
             resetForm(formName) {

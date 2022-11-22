@@ -82,7 +82,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 80);
+/******/ 	return __webpack_require__(__webpack_require__.s = 73);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -189,17 +189,10 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 13:
+/***/ 14:
 /***/ (function(module, exports) {
 
 module.exports = require("element-ui/lib/utils/popup");
-
-/***/ }),
-
-/***/ 17:
-/***/ (function(module, exports) {
-
-module.exports = require("element-ui/lib/utils/types");
 
 /***/ }),
 
@@ -217,7 +210,7 @@ module.exports = require("vue");
 
 /***/ }),
 
-/***/ 80:
+/***/ 73:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -438,18 +431,12 @@ if (false) { var api; }
 component.options.__file = "packages/message/src/main.vue"
 /* harmony default export */ var main = (component.exports);
 // EXTERNAL MODULE: external "element-ui/lib/utils/popup"
-var popup_ = __webpack_require__(13);
+var popup_ = __webpack_require__(14);
 
 // EXTERNAL MODULE: external "element-ui/lib/utils/vdom"
 var vdom_ = __webpack_require__(23);
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/types"
-var types_ = __webpack_require__(17);
-
 // CONCATENATED MODULE: ./packages/message/src/main.js
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-
 
 
 
@@ -497,25 +484,21 @@ var main_Message = function Message(options) {
 
 ['success', 'warning', 'info', 'error'].forEach(function (type) {
   main_Message[type] = function (options) {
-    if (Object(types_["isObject"])(options) && !Object(vdom_["isVNode"])(options)) {
-      return main_Message(_extends({}, options, {
-        type: type
-      }));
+    if (typeof options === 'string') {
+      options = {
+        message: options
+      };
     }
-    return main_Message({
-      type: type,
-      message: options
-    });
+    options.type = type;
+    return main_Message(options);
   };
 });
 
 main_Message.close = function (id, userOnClose) {
   var len = instances.length;
   var index = -1;
-  var removedHeight = void 0;
   for (var i = 0; i < len; i++) {
     if (id === instances[i].id) {
-      removedHeight = instances[i].$el.offsetHeight;
       index = i;
       if (typeof userOnClose === 'function') {
         userOnClose(instances[i]);
@@ -525,6 +508,7 @@ main_Message.close = function (id, userOnClose) {
     }
   }
   if (len <= 1 || index === -1 || index > instances.length - 1) return;
+  var removedHeight = instances[index].$el.offsetHeight;
   for (var _i = index; _i < len - 1; _i++) {
     var dom = instances[_i].$el;
     dom.style['top'] = parseInt(dom.style['top'], 10) - removedHeight - 16 + 'px';

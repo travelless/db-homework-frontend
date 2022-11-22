@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Main from './main.vue';
 import { PopupManager } from 'element-ui/src/utils/popup';
 import { isVNode } from 'element-ui/src/utils/vdom';
-import { isObject } from 'element-ui/src/utils/types';
 let MessageConstructor = Vue.extend(Main);
 
 let instance;
@@ -45,27 +44,22 @@ const Message = function(options) {
 };
 
 ['success', 'warning', 'info', 'error'].forEach(type => {
-  Message[type] = (options) => {
-    if (isObject(options) && !isVNode(options)) {
-      return Message({
-        ...options,
-        type
-      });
+  Message[type] = options => {
+    if (typeof options === 'string') {
+      options = {
+        message: options
+      };
     }
-    return Message({
-      type,
-      message: options
-    });
+    options.type = type;
+    return Message(options);
   };
 });
 
 Message.close = function(id, userOnClose) {
   let len = instances.length;
   let index = -1;
-  let removedHeight;
   for (let i = 0; i < len; i++) {
     if (id === instances[i].id) {
-      removedHeight = instances[i].$el.offsetHeight;
       index = i;
       if (typeof userOnClose === 'function') {
         userOnClose(instances[i]);
@@ -75,6 +69,7 @@ Message.close = function(id, userOnClose) {
     }
   }
   if (len <= 1 || index === -1 || index > instances.length - 1) return;
+  const removedHeight = instances[index].$el.offsetHeight;
   for (let i = index; i < len - 1 ; i++) {
     let dom = instances[i].$el;
     dom.style['top'] =

@@ -82,7 +82,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 78);
+/******/ 	return __webpack_require__(__webpack_require__.s = 76);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -189,21 +189,21 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 10:
+/***/ 11:
 /***/ (function(module, exports) {
 
 module.exports = require("element-ui/lib/input");
 
 /***/ }),
 
-/***/ 13:
+/***/ 14:
 /***/ (function(module, exports) {
 
 module.exports = require("element-ui/lib/utils/popup");
 
 /***/ }),
 
-/***/ 14:
+/***/ 18:
 /***/ (function(module, exports) {
 
 module.exports = require("element-ui/lib/button");
@@ -252,7 +252,7 @@ module.exports = require("vue");
 
 /***/ }),
 
-/***/ 78:
+/***/ 76:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -358,27 +358,25 @@ var render = function() {
                 ])
               : _vm._e(),
             _c("div", { staticClass: "el-message-box__content" }, [
-              _c("div", { staticClass: "el-message-box__container" }, [
-                _vm.icon && !_vm.center && _vm.message !== ""
-                  ? _c("div", { class: ["el-message-box__status", _vm.icon] })
-                  : _vm._e(),
-                _vm.message !== ""
-                  ? _c(
-                      "div",
-                      { staticClass: "el-message-box__message" },
-                      [
-                        _vm._t("default", [
-                          !_vm.dangerouslyUseHTMLString
-                            ? _c("p", [_vm._v(_vm._s(_vm.message))])
-                            : _c("p", {
-                                domProps: { innerHTML: _vm._s(_vm.message) }
-                              })
-                        ])
-                      ],
-                      2
-                    )
-                  : _vm._e()
-              ]),
+              _vm.icon && !_vm.center && _vm.message !== ""
+                ? _c("div", { class: ["el-message-box__status", _vm.icon] })
+                : _vm._e(),
+              _vm.message !== ""
+                ? _c(
+                    "div",
+                    { staticClass: "el-message-box__message" },
+                    [
+                      _vm._t("default", [
+                        !_vm.dangerouslyUseHTMLString
+                          ? _c("p", [_vm._v(_vm._s(_vm.message))])
+                          : _c("p", {
+                              domProps: { innerHTML: _vm._s(_vm.message) }
+                            })
+                      ])
+                    ],
+                    2
+                  )
+                : _vm._e(),
               _c(
                 "div",
                 {
@@ -557,7 +555,7 @@ render._withStripped = true
 // CONCATENATED MODULE: ./packages/message-box/src/main.vue?vue&type=template&id=6b29b012&
 
 // EXTERNAL MODULE: external "element-ui/lib/utils/popup"
-var popup_ = __webpack_require__(13);
+var popup_ = __webpack_require__(14);
 var popup_default = /*#__PURE__*/__webpack_require__.n(popup_);
 
 // EXTERNAL MODULE: external "element-ui/lib/mixins/locale"
@@ -565,11 +563,11 @@ var locale_ = __webpack_require__(6);
 var locale_default = /*#__PURE__*/__webpack_require__.n(locale_);
 
 // EXTERNAL MODULE: external "element-ui/lib/input"
-var input_ = __webpack_require__(10);
+var input_ = __webpack_require__(11);
 var input_default = /*#__PURE__*/__webpack_require__.n(input_);
 
 // EXTERNAL MODULE: external "element-ui/lib/button"
-var button_ = __webpack_require__(14);
+var button_ = __webpack_require__(18);
 var button_default = /*#__PURE__*/__webpack_require__.n(button_);
 
 // EXTERNAL MODULE: external "element-ui/lib/utils/dom"
@@ -583,8 +581,6 @@ var aria_dialog_ = __webpack_require__(47);
 var aria_dialog_default = /*#__PURE__*/__webpack_require__.n(aria_dialog_);
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./packages/message-box/src/main.vue?vue&type=script&lang=js&
-//
-//
 //
 //
 //

@@ -85,7 +85,7 @@ export default {
     upload: {
       deleteTip: 'Нажмите [Удалить] для удаления',
       delete: 'Удалить',
-      preview: 'Предпросмотр',
+      preview: 'Превью',
       continue: 'Продолжить'
     },
     table: {
@@ -107,17 +107,10 @@ export default {
       hasCheckedFormat: '{checked}/{total} выбрано'
     },
     image: {
-      error: 'Произошла ошибка'
+      error: 'FAILED' // to be translated
     },
     pageHeader: {
-      title: 'Назад'
-    },
-    popconfirm: {
-      confirmButtonText: 'OK',
-      cancelButtonText: 'Отмена'
-    },
-    empty: {
-      description: 'Нет данных'
+      title: 'Back' // to be translated
     }
   }
 };

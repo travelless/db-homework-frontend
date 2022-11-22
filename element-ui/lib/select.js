@@ -82,12 +82,11 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 61);
+/******/ 	return __webpack_require__(__webpack_require__.s = 60);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
+/******/ ([
+/* 0 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -188,71 +187,104 @@ function normalizeComponent (
 
 
 /***/ }),
-
-/***/ 10:
-/***/ (function(module, exports) {
-
-module.exports = require("element-ui/lib/input");
-
-/***/ }),
-
-/***/ 12:
-/***/ (function(module, exports) {
-
-module.exports = require("element-ui/lib/utils/clickoutside");
-
-/***/ }),
-
-/***/ 15:
-/***/ (function(module, exports) {
-
-module.exports = require("element-ui/lib/scrollbar");
-
-/***/ }),
-
-/***/ 16:
-/***/ (function(module, exports) {
-
-module.exports = require("element-ui/lib/utils/resize-event");
-
-/***/ }),
-
-/***/ 19:
-/***/ (function(module, exports) {
-
-module.exports = require("throttle-debounce/debounce");
-
-/***/ }),
-
-/***/ 21:
-/***/ (function(module, exports) {
-
-module.exports = require("element-ui/lib/utils/shared");
-
-/***/ }),
-
-/***/ 22:
-/***/ (function(module, exports) {
-
-module.exports = require("element-ui/lib/mixins/focus");
-
-/***/ }),
-
-/***/ 3:
+/* 1 */,
+/* 2 */,
+/* 3 */
 /***/ (function(module, exports) {
 
 module.exports = require("element-ui/lib/utils/util");
 
 /***/ }),
+/* 4 */
+/***/ (function(module, exports) {
 
-/***/ 31:
+module.exports = require("element-ui/lib/mixins/emitter");
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports = require("element-ui/lib/utils/vue-popper");
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = require("element-ui/lib/mixins/locale");
+
+/***/ }),
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */
+/***/ (function(module, exports) {
+
+module.exports = require("element-ui/lib/input");
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
+
+module.exports = require("element-ui/lib/utils/clickoutside");
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+module.exports = require("element-ui/lib/scrollbar");
+
+/***/ }),
+/* 14 */,
+/* 15 */
+/***/ (function(module, exports) {
+
+module.exports = require("element-ui/lib/utils/resize-event");
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+module.exports = require("throttle-debounce/debounce");
+
+/***/ }),
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */
+/***/ (function(module, exports) {
+
+module.exports = require("element-ui/lib/locale");
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports) {
+
+module.exports = require("element-ui/lib/utils/shared");
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports) {
+
+module.exports = require("element-ui/lib/mixins/focus");
+
+/***/ }),
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */
 /***/ (function(module, exports) {
 
 module.exports = require("element-ui/lib/utils/scroll-into-view");
 
 /***/ }),
-
-/***/ 33:
+/* 32 */,
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -457,16 +489,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     this.$on('handleGroupDisabled', this.handleGroupDisabled);
   },
   beforeDestroy: function beforeDestroy() {
-    var _select2 = this.select,
-        selected = _select2.selected,
-        multiple = _select2.multiple;
-
-    var selectedOptions = multiple ? selected : [selected];
     var index = this.select.cachedOptions.indexOf(this);
-    var selectedIndex = selectedOptions.indexOf(this);
-
-    // if option is not selected, remove it from cache
-    if (index > -1 && selectedIndex < 0) {
+    if (index > -1) {
       this.select.cachedOptions.splice(index, 1);
     }
     this.select.onOptionDestroy(this.select.options.indexOf(this));
@@ -502,36 +526,38 @@ component.options.__file = "packages/select/src/option.vue"
 /* harmony default export */ var src_option = __webpack_exports__["a"] = (component.exports);
 
 /***/ }),
-
-/***/ 37:
+/* 34 */,
+/* 35 */,
+/* 36 */
 /***/ (function(module, exports) {
 
 module.exports = require("element-ui/lib/tag");
 
 /***/ }),
-
-/***/ 4:
-/***/ (function(module, exports) {
-
-module.exports = require("element-ui/lib/mixins/emitter");
-
-/***/ }),
-
-/***/ 5:
-/***/ (function(module, exports) {
-
-module.exports = require("element-ui/lib/utils/vue-popper");
-
-/***/ }),
-
-/***/ 6:
-/***/ (function(module, exports) {
-
-module.exports = require("element-ui/lib/mixins/locale");
-
-/***/ }),
-
-/***/ 61:
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -697,7 +723,7 @@ var render = function() {
                             return null
                           }
                           $event.preventDefault()
-                          _vm.handleNavigate("next")
+                          _vm.navigateOptions("next")
                         },
                         function($event) {
                           if (
@@ -710,7 +736,7 @@ var render = function() {
                             return null
                           }
                           $event.preventDefault()
-                          _vm.handleNavigate("prev")
+                          _vm.navigateOptions("prev")
                         },
                         function($event) {
                           if (
@@ -803,15 +829,11 @@ var render = function() {
             "validate-event": false,
             tabindex: _vm.multiple && _vm.filterable ? "-1" : null
           },
-          on: {
-            focus: _vm.handleFocus,
-            blur: _vm.handleBlur,
-            input: _vm.debouncedOnInputChange,
-            compositionstart: _vm.handleComposition,
-            compositionupdate: _vm.handleComposition,
-            compositionend: _vm.handleComposition
-          },
+          on: { focus: _vm.handleFocus, blur: _vm.handleBlur },
           nativeOn: {
+            keyup: function($event) {
+              return _vm.debouncedOnInputChange($event)
+            },
             keydown: [
               function($event) {
                 if (
@@ -825,7 +847,7 @@ var render = function() {
                 }
                 $event.stopPropagation()
                 $event.preventDefault()
-                _vm.handleNavigate("next")
+                _vm.navigateOptions("next")
               },
               function($event) {
                 if (
@@ -839,7 +861,7 @@ var render = function() {
                 }
                 $event.stopPropagation()
                 $event.preventDefault()
-                _vm.handleNavigate("prev")
+                _vm.navigateOptions("prev")
               },
               function($event) {
                 if (
@@ -875,6 +897,9 @@ var render = function() {
                 _vm.visible = false
               }
             ],
+            paste: function($event) {
+              return _vm.debouncedOnInputChange($event)
+            },
             mouseenter: function($event) {
               _vm.inputHovering = true
             },
@@ -1025,7 +1050,7 @@ var locale_ = __webpack_require__(6);
 var locale_default = /*#__PURE__*/__webpack_require__.n(locale_);
 
 // EXTERNAL MODULE: external "element-ui/lib/input"
-var input_ = __webpack_require__(10);
+var input_ = __webpack_require__(11);
 var input_default = /*#__PURE__*/__webpack_require__.n(input_);
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./packages/select/src/select-dropdown.vue?vue&type=template&id=06828748&
@@ -1163,15 +1188,15 @@ component.options.__file = "packages/select/src/select-dropdown.vue"
 var src_option = __webpack_require__(33);
 
 // EXTERNAL MODULE: external "element-ui/lib/tag"
-var tag_ = __webpack_require__(37);
+var tag_ = __webpack_require__(36);
 var tag_default = /*#__PURE__*/__webpack_require__.n(tag_);
 
 // EXTERNAL MODULE: external "element-ui/lib/scrollbar"
-var scrollbar_ = __webpack_require__(15);
+var scrollbar_ = __webpack_require__(13);
 var scrollbar_default = /*#__PURE__*/__webpack_require__.n(scrollbar_);
 
 // EXTERNAL MODULE: external "throttle-debounce/debounce"
-var debounce_ = __webpack_require__(19);
+var debounce_ = __webpack_require__(16);
 var debounce_default = /*#__PURE__*/__webpack_require__.n(debounce_);
 
 // EXTERNAL MODULE: external "element-ui/lib/utils/clickoutside"
@@ -1179,7 +1204,10 @@ var clickoutside_ = __webpack_require__(12);
 var clickoutside_default = /*#__PURE__*/__webpack_require__.n(clickoutside_);
 
 // EXTERNAL MODULE: external "element-ui/lib/utils/resize-event"
-var resize_event_ = __webpack_require__(16);
+var resize_event_ = __webpack_require__(15);
+
+// EXTERNAL MODULE: external "element-ui/lib/locale"
+var lib_locale_ = __webpack_require__(20);
 
 // EXTERNAL MODULE: external "element-ui/lib/utils/scroll-into-view"
 var scroll_into_view_ = __webpack_require__(31);
@@ -1391,8 +1419,7 @@ var shared_ = __webpack_require__(21);
 //
 //
 //
-//
-//
+
 
 
 
@@ -1484,9 +1511,6 @@ var shared_ = __webpack_require__(21);
     },
     collapseTagSize: function collapseTagSize() {
       return ['small', 'mini'].indexOf(this.selectSize) > -1 ? 'mini' : 'small';
-    },
-    propPlaceholder: function propPlaceholder() {
-      return typeof this.placeholder !== 'undefined' ? this.placeholder : this.t('el.select.placeholder');
     }
   },
 
@@ -1539,7 +1563,9 @@ var shared_ = __webpack_require__(21);
     },
     placeholder: {
       type: String,
-      required: false
+      default: function _default() {
+        return Object(lib_locale_["t"])('el.select.placeholder');
+      }
     },
     defaultFirstOption: Boolean,
     reserveKeyword: Boolean,
@@ -1590,7 +1616,7 @@ var shared_ = __webpack_require__(21);
         _this2.resetInputHeight();
       });
     },
-    propPlaceholder: function propPlaceholder(val) {
+    placeholder: function placeholder(val) {
       this.cachedPlaceHolder = this.currentPlaceholder = val;
     },
     value: function value(val, oldVal) {
@@ -1690,11 +1716,6 @@ var shared_ = __webpack_require__(21);
   },
 
   methods: {
-    handleNavigate: function handleNavigate(direction) {
-      if (this.isOnComposition) return;
-
-      this.navigateOptions(direction);
-    },
     handleComposition: function handleComposition(event) {
       var _this5 = this;
 
@@ -1780,7 +1801,7 @@ var shared_ = __webpack_require__(21);
         }
       }
       if (option) return option;
-      var label = !isObject && !isNull && !isUndefined ? String(value) : '';
+      var label = !isObject && !isNull && !isUndefined ? value : '';
       var newOption = {
         value: value,
         currentLabel: label
@@ -1820,10 +1841,10 @@ var shared_ = __webpack_require__(21);
     handleFocus: function handleFocus(event) {
       if (!this.softFocus) {
         if (this.automaticDropdown || this.filterable) {
-          if (this.filterable && !this.visible) {
+          this.visible = true;
+          if (this.filterable) {
             this.menuVisibleOnFocus = true;
           }
-          this.visible = true;
         }
         this.$emit('focus', event);
       } else {
@@ -1897,9 +1918,8 @@ var shared_ = __webpack_require__(21);
           return item.tagName === 'INPUT';
         })[0];
         var tags = _this10.$refs.tags;
-        var tagsHeight = tags ? Math.round(tags.getBoundingClientRect().height) : 0;
         var sizeInMap = _this10.initialInputHeight || 40;
-        input.style.height = _this10.selected.length === 0 ? sizeInMap + 'px' : Math.max(tags ? tagsHeight + (tagsHeight > sizeInMap ? 6 : 0) : 0, sizeInMap) + 'px';
+        input.style.height = _this10.selected.length === 0 ? sizeInMap + 'px' : Math.max(tags ? tags.clientHeight + (tags.clientHeight > sizeInMap ? 6 : 0) : 0, sizeInMap) + 'px';
         if (_this10.visible && _this10.emptyText !== false) {
           _this10.broadcast('ElSelectDropdown', 'updatePopper');
         }
@@ -2081,7 +2101,7 @@ var shared_ = __webpack_require__(21);
   created: function created() {
     var _this13 = this;
 
-    this.cachedPlaceHolder = this.currentPlaceholder = this.propPlaceholder;
+    this.cachedPlaceHolder = this.currentPlaceholder = this.placeholder;
     if (this.multiple && !Array.isArray(this.value)) {
       this.$emit('input', []);
     }
@@ -2168,5 +2188,4 @@ src_select.install = function (Vue) {
 /* harmony default export */ var packages_select = __webpack_exports__["default"] = (src_select);
 
 /***/ })
-
-/******/ });
+/******/ ]);

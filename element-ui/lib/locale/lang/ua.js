@@ -4,7 +4,7 @@ exports.__esModule = true;
 exports.default = {
   el: {
     colorpicker: {
-      confirm: 'Обрати',
+      confirm: 'OK',
       clear: 'Очистити'
     },
     datepicker: {
@@ -110,17 +110,10 @@ exports.default = {
       hasCheckedFormat: '{checked}/{total} вибрано'
     },
     image: {
-      error: 'ПОМИЛКА'
+      error: 'FAILED' // to be translated
     },
     pageHeader: {
-      title: 'Назад'
-    },
-    popconfirm: {
-      confirmButtonText: 'Так',
-      cancelButtonText: 'Ні'
-    },
-    empty: {
-      description: 'Немає даних'
+      title: 'Back' // to be translated
     }
   }
 };

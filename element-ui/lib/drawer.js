@@ -82,7 +82,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 125);
+/******/ 	return __webpack_require__(__webpack_require__.s = 87);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -189,7 +189,28 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 125:
+/***/ 10:
+/***/ (function(module, exports) {
+
+module.exports = require("element-ui/lib/mixins/migrating");
+
+/***/ }),
+
+/***/ 14:
+/***/ (function(module, exports) {
+
+module.exports = require("element-ui/lib/utils/popup");
+
+/***/ }),
+
+/***/ 4:
+/***/ (function(module, exports) {
+
+module.exports = require("element-ui/lib/mixins/emitter");
+
+/***/ }),
+
+/***/ 87:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -218,8 +239,8 @@ var render = function() {
               expression: "visible"
             }
           ],
-          staticClass: "el-drawer__wrapper",
-          attrs: { tabindex: "-1" }
+          staticClass: "el-dialog__wrapper",
+          attrs: { role: "presentation" }
         },
         [
           _c(
@@ -245,56 +266,50 @@ var render = function() {
                   staticClass: "el-drawer",
                   class: [_vm.direction, _vm.customClass],
                   style: _vm.isHorizontal
-                    ? "width: " + _vm.drawerSize
-                    : "height: " + _vm.drawerSize,
+                    ? "width: " + _vm.size
+                    : "height: " + _vm.size,
                   attrs: {
                     "aria-modal": "true",
                     "aria-labelledby": "el-drawer__title",
-                    "aria-label": _vm.title,
-                    role: "dialog",
-                    tabindex: "-1"
+                    role: "presentation"
                   }
                 },
                 [
-                  _vm.withHeader
-                    ? _c(
-                        "header",
-                        {
-                          staticClass: "el-drawer__header",
-                          attrs: { id: "el-drawer__title" }
-                        },
-                        [
-                          _vm._t("title", [
-                            _c(
-                              "span",
-                              { attrs: { role: "heading", title: _vm.title } },
-                              [_vm._v(_vm._s(_vm.title))]
-                            )
-                          ]),
-                          _vm.showClose
-                            ? _c(
-                                "button",
-                                {
-                                  staticClass: "el-drawer__close-btn",
-                                  attrs: {
-                                    "aria-label":
-                                      "close " + (_vm.title || "drawer"),
-                                    type: "button"
-                                  },
-                                  on: { click: _vm.closeDrawer }
-                                },
-                                [
-                                  _c("i", {
-                                    staticClass:
-                                      "el-dialog__close el-icon el-icon-close"
-                                  })
-                                ]
-                              )
-                            : _vm._e()
-                        ],
-                        2
-                      )
-                    : _vm._e(),
+                  _c(
+                    "header",
+                    {
+                      staticClass: "el-drawer__header",
+                      attrs: { id: "el-drawer__title" }
+                    },
+                    [
+                      _vm._t("title", [
+                        _c("span", { attrs: { role: "heading" } }, [
+                          _vm._v(_vm._s(_vm.title))
+                        ])
+                      ]),
+                      _vm.showClose
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "el-drawer__close-btn",
+                              attrs: {
+                                "aria-label":
+                                  "close " + (_vm.title || "drawer"),
+                                type: "button"
+                              },
+                              on: { click: _vm.closeDrawer }
+                            },
+                            [
+                              _c("i", {
+                                staticClass:
+                                  "el-dialog__close el-icon el-icon-close"
+                              })
+                            ]
+                          )
+                        : _vm._e()
+                    ],
+                    2
+                  ),
                   _vm.rendered
                     ? _c(
                         "section",
@@ -319,8 +334,12 @@ render._withStripped = true
 // CONCATENATED MODULE: ./packages/drawer/src/main.vue?vue&type=template&id=a4885264&
 
 // EXTERNAL MODULE: external "element-ui/lib/utils/popup"
-var popup_ = __webpack_require__(13);
+var popup_ = __webpack_require__(14);
 var popup_default = /*#__PURE__*/__webpack_require__.n(popup_);
+
+// EXTERNAL MODULE: external "element-ui/lib/mixins/migrating"
+var migrating_ = __webpack_require__(10);
+var migrating_default = /*#__PURE__*/__webpack_require__.n(migrating_);
 
 // EXTERNAL MODULE: external "element-ui/lib/mixins/emitter"
 var emitter_ = __webpack_require__(4);
@@ -372,20 +391,18 @@ var emitter_default = /*#__PURE__*/__webpack_require__.n(emitter_);
 //
 //
 //
-//
-//
-//
+
 
 
 
 
 /* harmony default export */ var mainvue_type_script_lang_js_ = ({
   name: 'ElDrawer',
-  mixins: [popup_default.a, emitter_default.a],
+  mixins: [popup_default.a, emitter_default.a, migrating_default.a],
   props: {
     appendToBody: {
       type: Boolean,
-      default: false
+      default: true
     },
     beforeClose: {
       type: Function
@@ -393,10 +410,6 @@ var emitter_default = /*#__PURE__*/__webpack_require__.n(emitter_);
     customClass: {
       type: String,
       default: ''
-    },
-    closeOnPressEscape: {
-      type: Boolean,
-      default: true
     },
     destroyOnClose: {
       type: Boolean,
@@ -413,16 +426,12 @@ var emitter_default = /*#__PURE__*/__webpack_require__.n(emitter_);
         return ['ltr', 'rtl', 'ttb', 'btt'].indexOf(val) !== -1;
       }
     },
-    modalAppendToBody: {
-      type: Boolean,
-      default: true
-    },
     showClose: {
       type: Boolean,
       default: true
     },
     size: {
-      type: [Number, String],
+      type: String,
       default: '30%'
     },
     title: {
@@ -435,50 +444,29 @@ var emitter_default = /*#__PURE__*/__webpack_require__.n(emitter_);
     wrapperClosable: {
       type: Boolean,
       default: true
-    },
-    withHeader: {
-      type: Boolean,
-      default: true
     }
   },
   computed: {
     isHorizontal: function isHorizontal() {
       return this.direction === 'rtl' || this.direction === 'ltr';
-    },
-    drawerSize: function drawerSize() {
-      return typeof this.size === 'number' ? this.size + 'px' : this.size;
     }
   },
   data: function data() {
     return {
-      closed: false,
-      prevActiveElement: null
+      closed: false
     };
   },
 
   watch: {
     visible: function visible(val) {
-      var _this = this;
-
       if (val) {
         this.closed = false;
         this.$emit('open');
         if (this.appendToBody) {
           document.body.appendChild(this.$el);
         }
-        this.prevActiveElement = document.activeElement;
       } else {
-        if (!this.closed) {
-          this.$emit('close');
-          if (this.destroyOnClose === true) {
-            this.rendered = false;
-          }
-        }
-        this.$nextTick(function () {
-          if (_this.prevActiveElement) {
-            _this.prevActiveElement.focus();
-          }
-        });
+        if (!this.closed) this.$emit('close');
       }
     }
   },
@@ -510,21 +498,12 @@ var emitter_default = /*#__PURE__*/__webpack_require__.n(emitter_);
       } else {
         this.hide();
       }
-    },
-    handleClose: function handleClose() {
-      // This method here will be called by PopupManger, when the `closeOnPressEscape` was set to true
-      // pressing `ESC` will call this method, and also close the drawer.
-      // This method also calls `beforeClose` if there was one.
-      this.closeDrawer();
     }
   },
   mounted: function mounted() {
     if (this.visible) {
       this.rendered = true;
       this.open();
-      if (this.appendToBody) {
-        document.body.appendChild(this.$el);
-      }
     }
   },
   destroyed: function destroyed() {
@@ -571,20 +550,6 @@ main.install = function (Vue) {
 };
 
 /* harmony default export */ var drawer = __webpack_exports__["default"] = (main);
-
-/***/ }),
-
-/***/ 13:
-/***/ (function(module, exports) {
-
-module.exports = require("element-ui/lib/utils/popup");
-
-/***/ }),
-
-/***/ 4:
-/***/ (function(module, exports) {
-
-module.exports = require("element-ui/lib/mixins/emitter");
 
 /***/ })
 

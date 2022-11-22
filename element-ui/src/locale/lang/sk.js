@@ -109,17 +109,10 @@ export default {
       hasCheckedFormat: '{checked}/{total} označených'
     },
     image: {
-      error: 'Chyba načítania'
+      error: 'FAILED' // to be translated
     },
     pageHeader: {
-      title: 'Späť'
-    },
-    popconfirm: {
-      confirmButtonText: 'Potvrdiť',
-      cancelButtonText: 'Zrušiť'
-    },
-    empty: {
-      description: 'Žiadne dáta'
+      title: 'Back' // to be translated
     }
   }
 };

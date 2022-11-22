@@ -82,12 +82,12 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 134);
+/******/ 	return __webpack_require__(__webpack_require__.s = 128);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 134:
+/***/ 128:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -136,15 +136,14 @@ var cellForced = {
           indeterminate: store.states.selection.length > 0 && !this.isAllSelected,
 
           value: this.isAllSelected },
-        on: {
-          'input': this.toggleAllSelection
+        nativeOn: {
+          'click': this.toggleAllSelection
         }
       });
     },
     renderCell: function renderCell(h, _ref2) {
       var row = _ref2.row,
           column = _ref2.column,
-          isSelected = _ref2.isSelected,
           store = _ref2.store,
           $index = _ref2.$index;
 
@@ -155,7 +154,7 @@ var cellForced = {
           }
         },
         attrs: {
-          value: isSelected,
+          value: store.isSelected(row),
           disabled: column.selectable ? !column.selectable.call(null, row, $index) : false
         },
         on: {
@@ -199,11 +198,10 @@ var cellForced = {
     },
     renderCell: function renderCell(h, _ref6) {
       var row = _ref6.row,
-          store = _ref6.store,
-          isExpanded = _ref6.isExpanded;
+          store = _ref6.store;
 
       var classes = ['el-table__expand-icon'];
-      if (isExpanded) {
+      if (store.states.expandRows.indexOf(row) > -1) {
         classes.push('el-table__expand-icon--expanded');
       }
       var callback = function callback(e) {
@@ -277,7 +275,7 @@ function treeCellPrefix(h, _ref8) {
 var util = __webpack_require__(8);
 
 // EXTERNAL MODULE: external "element-ui/lib/checkbox"
-var checkbox_ = __webpack_require__(18);
+var checkbox_ = __webpack_require__(17);
 var checkbox_default = /*#__PURE__*/__webpack_require__.n(checkbox_);
 
 // CONCATENATED MODULE: ./packages/table/src/table-column.js
@@ -433,10 +431,11 @@ var columnIdSeed = 1;
 
       var h = this.$createElement;
 
+      var specialTypes = Object.keys(cellForced);
       // renderHeader 属性不推荐使用。
       if (this.renderHeader) {
         console.warn('[Element Warn][TableColumn]Comparing to render-header, scoped-slot header is easier to use. We recommend users to use scoped-slot header.');
-      } else if (column.type !== 'selection') {
+      } else if (specialTypes.indexOf(column.type) === -1) {
         column.renderHeader = function (h, scope) {
           var renderHeader = _this2.$scopedSlots.header;
           return renderHeader ? renderHeader(scope) : column.label;
@@ -618,7 +617,7 @@ table_column.install = function (Vue) {
 
 /***/ }),
 
-/***/ 18:
+/***/ 17:
 /***/ (function(module, exports) {
 
 module.exports = require("element-ui/lib/checkbox");

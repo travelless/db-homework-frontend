@@ -14,9 +14,6 @@ export declare class ElProgress extends ElementUIComponent {
   /** The width of progress bar */
   strokeWidth: number
 
-  /** Circle progress bar stroke line cap */
-  strokeLinecap: string
-
   /** Whether to place the percentage inside progress bar, only works when type is 'line' */
   textInside: boolean
 

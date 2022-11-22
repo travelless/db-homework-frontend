@@ -82,7 +82,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 70);
+/******/ 	return __webpack_require__(__webpack_require__.s = 66);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -196,24 +196,10 @@ module.exports = require("element-ui/lib/utils/date-util");
 
 /***/ }),
 
-/***/ 14:
-/***/ (function(module, exports) {
-
-module.exports = require("element-ui/lib/button");
-
-/***/ }),
-
 /***/ 24:
 /***/ (function(module, exports) {
 
 module.exports = require("element-ui/lib/utils/date");
-
-/***/ }),
-
-/***/ 35:
-/***/ (function(module, exports) {
-
-module.exports = require("element-ui/lib/button-group");
 
 /***/ }),
 
@@ -224,7 +210,7 @@ module.exports = require("element-ui/lib/mixins/locale");
 
 /***/ }),
 
-/***/ 70:
+/***/ 66:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -360,14 +346,6 @@ var locale_default = /*#__PURE__*/__webpack_require__.n(locale_);
 var date_ = __webpack_require__(24);
 var date_default = /*#__PURE__*/__webpack_require__.n(date_);
 
-// EXTERNAL MODULE: external "element-ui/lib/button"
-var button_ = __webpack_require__(14);
-var button_default = /*#__PURE__*/__webpack_require__.n(button_);
-
-// EXTERNAL MODULE: external "element-ui/lib/button-group"
-var button_group_ = __webpack_require__(35);
-var button_group_default = /*#__PURE__*/__webpack_require__.n(button_group_);
-
 // EXTERNAL MODULE: external "element-ui/lib/utils/date-util"
 var date_util_ = __webpack_require__(1);
 
@@ -395,6 +373,13 @@ var date_util_ = __webpack_require__(1);
   },
 
   inject: ['elCalendar'],
+
+  data: function data() {
+    return {
+      WEEK_DAYS: Object(date_util_["getI18nSettings"])().dayNames
+    };
+  },
+
 
   methods: {
     toNestedArr: function toNestedArr(days) {
@@ -459,9 +444,6 @@ var date_util_ = __webpack_require__(1);
   },
 
   computed: {
-    WEEK_DAYS: function WEEK_DAYS() {
-      return Object(date_util_["getI18nSettings"])().dayNames;
-    },
     prevMonthDatePrefix: function prevMonthDatePrefix() {
       var temp = new Date(this.date.getTime());
       temp.setDate(0);
@@ -508,8 +490,7 @@ var date_util_ = __webpack_require__(1);
         var firstDay = Object(date_util_["getFirstDayOfMonth"])(date);
         firstDay = firstDay === 0 ? 7 : firstDay;
         var firstDayOfWeek = typeof this.firstDayOfWeek === 'number' ? this.firstDayOfWeek : 1;
-        var offset = (7 + firstDay - firstDayOfWeek) % 7;
-        var prevMonthDays = Object(date_util_["getPrevMonthLastDays"])(date, offset).map(function (day) {
+        var prevMonthDays = Object(date_util_["getPrevMonthLastDays"])(date, firstDay - firstDayOfWeek).map(function (day) {
           return {
             text: day,
             type: 'prev'
@@ -690,8 +671,6 @@ component.options.__file = "packages/calendar/src/date-table.vue"
 
 
 
-
-
 var validTypes = ['prev-month', 'today', 'next-month'];
 var weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 var oneDay = 86400000;
@@ -702,9 +681,7 @@ var oneDay = 86400000;
   mixins: [locale_default.a],
 
   components: {
-    DateTable: date_table,
-    ElButton: button_default.a,
-    ElButtonGroup: button_group_default.a
+    DateTable: date_table
   },
 
   props: {

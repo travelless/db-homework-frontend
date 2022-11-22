@@ -82,7 +82,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 114);
+/******/ 	return __webpack_require__(__webpack_require__.s = 112);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -192,18 +192,18 @@ function normalizeComponent (
 /***/ 10:
 /***/ (function(module, exports) {
 
-module.exports = require("element-ui/lib/input");
+module.exports = require("element-ui/lib/mixins/migrating");
 
 /***/ }),
 
 /***/ 11:
 /***/ (function(module, exports) {
 
-module.exports = require("element-ui/lib/mixins/migrating");
+module.exports = require("element-ui/lib/input");
 
 /***/ }),
 
-/***/ 114:
+/***/ 112:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -308,7 +308,7 @@ var render = function() {
             "div",
             { staticClass: "el-cascader__tags" },
             [
-              _vm._l(_vm.presentTags, function(tag) {
+              _vm._l(_vm.presentTags, function(tag, index) {
                 return _c(
                   "el-tag",
                   {
@@ -322,7 +322,7 @@ var render = function() {
                     },
                     on: {
                       close: function($event) {
-                        _vm.deleteTag(tag)
+                        _vm.deleteTag(index)
                       }
                     }
                   },
@@ -532,19 +532,19 @@ var locale_ = __webpack_require__(6);
 var locale_default = /*#__PURE__*/__webpack_require__.n(locale_);
 
 // EXTERNAL MODULE: external "element-ui/lib/mixins/migrating"
-var migrating_ = __webpack_require__(11);
+var migrating_ = __webpack_require__(10);
 var migrating_default = /*#__PURE__*/__webpack_require__.n(migrating_);
 
 // EXTERNAL MODULE: external "element-ui/lib/input"
-var input_ = __webpack_require__(10);
+var input_ = __webpack_require__(11);
 var input_default = /*#__PURE__*/__webpack_require__.n(input_);
 
 // EXTERNAL MODULE: external "element-ui/lib/tag"
-var tag_ = __webpack_require__(37);
+var tag_ = __webpack_require__(36);
 var tag_default = /*#__PURE__*/__webpack_require__.n(tag_);
 
 // EXTERNAL MODULE: external "element-ui/lib/scrollbar"
-var scrollbar_ = __webpack_require__(15);
+var scrollbar_ = __webpack_require__(13);
 var scrollbar_default = /*#__PURE__*/__webpack_require__.n(scrollbar_);
 
 // EXTERNAL MODULE: external "element-ui/lib/cascader-panel"
@@ -552,7 +552,7 @@ var cascader_panel_ = __webpack_require__(50);
 var cascader_panel_default = /*#__PURE__*/__webpack_require__.n(cascader_panel_);
 
 // EXTERNAL MODULE: external "element-ui/lib/utils/aria-utils"
-var aria_utils_ = __webpack_require__(40);
+var aria_utils_ = __webpack_require__(39);
 var aria_utils_default = /*#__PURE__*/__webpack_require__.n(aria_utils_);
 
 // EXTERNAL MODULE: external "element-ui/lib/locale"
@@ -562,16 +562,16 @@ var lib_locale_ = __webpack_require__(20);
 var util_ = __webpack_require__(3);
 
 // EXTERNAL MODULE: external "element-ui/lib/utils/types"
-var types_ = __webpack_require__(17);
+var types_ = __webpack_require__(19);
 
 // EXTERNAL MODULE: external "element-ui/lib/utils/shared"
 var shared_ = __webpack_require__(21);
 
 // EXTERNAL MODULE: external "element-ui/lib/utils/resize-event"
-var resize_event_ = __webpack_require__(16);
+var resize_event_ = __webpack_require__(15);
 
 // EXTERNAL MODULE: external "throttle-debounce/debounce"
-var debounce_ = __webpack_require__(19);
+var debounce_ = __webpack_require__(16);
 var debounce_default = /*#__PURE__*/__webpack_require__.n(debounce_);
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./packages/cascader/src/cascader.vue?vue&type=script&lang=js&
@@ -737,8 +737,7 @@ var PopperMixin = {
     arrowOffset: vue_popper_default.a.props.arrowOffset,
     offset: vue_popper_default.a.props.offset,
     boundariesPadding: vue_popper_default.a.props.boundariesPadding,
-    popperOptions: vue_popper_default.a.props.popperOptions,
-    transformOrigin: vue_popper_default.a.props.transformOrigin
+    popperOptions: vue_popper_default.a.props.popperOptions
   },
   methods: vue_popper_default.a.methods,
   data: vue_popper_default.a.data,
@@ -814,7 +813,7 @@ var InputSizeMap = {
   data: function data() {
     return {
       dropDownVisible: false,
-      checkedValue: this.value,
+      checkedValue: this.value || null,
       inputHover: false,
       inputValue: null,
       presentText: null,
@@ -942,7 +941,7 @@ var InputSizeMap = {
       this.inputInitialHeight = input.$el.offsetHeight || InputSizeMap[this.realSize] || 40;
     }
 
-    if (!this.isEmptyValue(this.value)) {
+    if (!Object(util_["isEmpty"])(this.value)) {
       this.computePresentContent();
     }
 
@@ -1009,7 +1008,6 @@ var InputSizeMap = {
     handleDropdownLeave: function handleDropdownLeave() {
       this.filtering = false;
       this.inputValue = this.presentText;
-      this.doDestroy();
     },
     handleKeyDown: function handleKeyDown(event) {
       switch (event.keyCode) {
@@ -1089,20 +1087,11 @@ var InputSizeMap = {
         }
       });
     },
-    isEmptyValue: function isEmptyValue(val) {
-      var multiple = this.multiple;
-      var emitPath = this.panel.config.emitPath;
-
-      if (multiple || emitPath) {
-        return Object(util_["isEmpty"])(val);
-      }
-      return false;
-    },
     computePresentText: function computePresentText() {
       var checkedValue = this.checkedValue,
           config = this.config;
 
-      if (!this.isEmptyValue(checkedValue)) {
+      if (!Object(util_["isEmpty"])(checkedValue)) {
         var node = this.panel.getNodeByValue(checkedValue);
         if (node && (config.checkStrictly || node.isLeaf)) {
           this.presentText = node.getText(this.showAllLevels, this.separator);
@@ -1223,7 +1212,7 @@ var InputSizeMap = {
 
       if (this.pressDeleteCount) {
         if (lastTag.hitState) {
-          this.deleteTag(lastTag);
+          this.deleteTag(lastIndex);
         } else {
           lastTag.hitState = true;
         }
@@ -1244,15 +1233,12 @@ var InputSizeMap = {
         this.toggleDropDownVisible(false);
       }
     },
-    deleteTag: function deleteTag(tag) {
+    deleteTag: function deleteTag(index) {
       var checkedValue = this.checkedValue;
 
-      var current = tag.node.getValueByOption();
-      var val = checkedValue.find(function (n) {
-        return Object(util_["isEqual"])(n, current);
-      });
-      this.checkedValue = checkedValue.filter(function (n) {
-        return !Object(util_["isEqual"])(n, current);
+      var val = checkedValue[index];
+      this.checkedValue = checkedValue.filter(function (n, i) {
+        return i !== index;
       });
       this.$emit('remove-tag', val);
     },
@@ -1277,12 +1263,11 @@ var InputSizeMap = {
       }
 
       if (tags) {
-        var offsetHeight = Math.round(tags.getBoundingClientRect().height);
+        var offsetHeight = tags.offsetHeight;
+
         var height = Math.max(offsetHeight + 6, inputInitialHeight) + 'px';
         inputInner.style.height = height;
-        if (this.dropDownVisible) {
-          this.updatePopper();
-        }
+        this.updatePopper();
       }
     },
 
@@ -1342,31 +1327,31 @@ module.exports = require("element-ui/lib/utils/clickoutside");
 
 /***/ }),
 
-/***/ 15:
+/***/ 13:
 /***/ (function(module, exports) {
 
 module.exports = require("element-ui/lib/scrollbar");
 
 /***/ }),
 
-/***/ 16:
+/***/ 15:
 /***/ (function(module, exports) {
 
 module.exports = require("element-ui/lib/utils/resize-event");
 
 /***/ }),
 
-/***/ 17:
+/***/ 16:
 /***/ (function(module, exports) {
 
-module.exports = require("element-ui/lib/utils/types");
+module.exports = require("throttle-debounce/debounce");
 
 /***/ }),
 
 /***/ 19:
 /***/ (function(module, exports) {
 
-module.exports = require("throttle-debounce/debounce");
+module.exports = require("element-ui/lib/utils/types");
 
 /***/ }),
 
@@ -1391,10 +1376,17 @@ module.exports = require("element-ui/lib/utils/util");
 
 /***/ }),
 
-/***/ 37:
+/***/ 36:
 /***/ (function(module, exports) {
 
 module.exports = require("element-ui/lib/tag");
+
+/***/ }),
+
+/***/ 39:
+/***/ (function(module, exports) {
+
+module.exports = require("element-ui/lib/utils/aria-utils");
 
 /***/ }),
 
@@ -1402,13 +1394,6 @@ module.exports = require("element-ui/lib/tag");
 /***/ (function(module, exports) {
 
 module.exports = require("element-ui/lib/mixins/emitter");
-
-/***/ }),
-
-/***/ 40:
-/***/ (function(module, exports) {
-
-module.exports = require("element-ui/lib/utils/aria-utils");
 
 /***/ }),
 

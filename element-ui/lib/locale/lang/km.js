@@ -8,7 +8,7 @@ exports.default = {
       clear: 'លុប'
     },
     datepicker: {
-      now: 'ឥឡូវនេះ',
+      now: 'ឥឡូវ​នេះ',
       today: 'ថ្ងៃនេះ',
       cancel: 'បោះបង់',
       clear: 'លុប',
@@ -36,10 +36,10 @@ exports.default = {
       month10: 'តុលា',
       month11: 'វិច្ឆកា',
       month12: 'ធ្នូ',
-      week: 'សប្តាហ៍',
+      // week: 'week',
       weeks: {
         sun: 'អាទិត្យ',
-        mon: 'ច័ន្ទ',
+        mon: 'Mon',
         tue: 'អង្គារ',
         wed: 'ពុធ',
         thu: 'ព្រ.ហ',
@@ -110,17 +110,10 @@ exports.default = {
       hasCheckedFormat: '{checked}/{total} បានគូសធីក'
     },
     image: {
-      error: 'បរាជ័យ'
+      error: 'FAILED' // to be translated
     },
     pageHeader: {
-      title: 'Back'
-    },
-    popconfirm: {
-      confirmButtonText: 'ព្រម',
-      cancelButtonText: 'មិនព្រម'
-    },
-    empty: {
-      description: 'គ្មានទិន្ន័យ'
+      title: 'Back' // to be translated
     }
   }
 };

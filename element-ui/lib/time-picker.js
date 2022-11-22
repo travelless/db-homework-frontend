@@ -82,7 +82,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 76);
+/******/ 	return __webpack_require__(__webpack_require__.s = 71);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -196,7 +196,7 @@ module.exports = require("element-ui/lib/utils/date-util");
 
 /***/ }),
 
-/***/ 10:
+/***/ 11:
 /***/ (function(module, exports) {
 
 module.exports = require("element-ui/lib/input");
@@ -210,7 +210,7 @@ module.exports = require("element-ui/lib/utils/clickoutside");
 
 /***/ }),
 
-/***/ 15:
+/***/ 13:
 /***/ (function(module, exports) {
 
 module.exports = require("element-ui/lib/scrollbar");
@@ -790,7 +790,7 @@ var emitter_ = __webpack_require__(4);
 var emitter_default = /*#__PURE__*/__webpack_require__.n(emitter_);
 
 // EXTERNAL MODULE: external "element-ui/lib/input"
-var input_ = __webpack_require__(10);
+var input_ = __webpack_require__(11);
 var input_default = /*#__PURE__*/__webpack_require__.n(input_);
 
 // EXTERNAL MODULE: external "element-ui/lib/utils/merge"
@@ -897,9 +897,7 @@ var NewPopper = {
     appendToBody: vue_popper_default.a.props.appendToBody,
     offset: vue_popper_default.a.props.offset,
     boundariesPadding: vue_popper_default.a.props.boundariesPadding,
-    arrowOffset: vue_popper_default.a.props.arrowOffset,
-    placement: vue_popper_default.a.props.placement,
-    transformOrigin: vue_popper_default.a.props.transformOrigin
+    arrowOffset: vue_popper_default.a.props.arrowOffset
   },
   methods: vue_popper_default.a.methods,
   data: function data() {
@@ -2089,7 +2087,7 @@ render._withStripped = true
 var date_util_ = __webpack_require__(1);
 
 // EXTERNAL MODULE: external "element-ui/lib/scrollbar"
-var scrollbar_ = __webpack_require__(15);
+var scrollbar_ = __webpack_require__(13);
 var scrollbar_default = /*#__PURE__*/__webpack_require__.n(scrollbar_);
 
 // EXTERNAL MODULE: ./src/directives/repeat-click.js
@@ -2309,16 +2307,16 @@ var repeat_click = __webpack_require__(30);
     bindScrollEvent: function bindScrollEvent() {
       var _this2 = this;
 
-      var bindFunction = function bindFunction(type) {
+      var bindFuntion = function bindFuntion(type) {
         _this2.$refs[type].wrap.onscroll = function (e) {
           // TODO: scroll is emitted when set scrollTop programatically
           // should find better solutions in the future!
           _this2.handleScroll(type, e);
         };
       };
-      bindFunction('hours');
-      bindFunction('minutes');
-      bindFunction('seconds');
+      bindFuntion('hours');
+      bindFuntion('minutes');
+      bindFuntion('seconds');
     },
     handleScroll: function handleScroll(type) {
       var value = Math.min(Math.round((this.$refs[type].wrap.scrollTop - (this.scrollBarHeight(type) * 0.5 - 10) / this.typeItemHeight(type) + 3) / this.typeItemHeight(type)), type === 'hours' ? 23 : 59);
@@ -2345,8 +2343,6 @@ var repeat_click = __webpack_require__(30);
       }
     },
     scrollDown: function scrollDown(step) {
-      var _this3 = this;
-
       if (!this.currentScrollbar) {
         this.emitSelectRange('hours');
       }
@@ -2373,9 +2369,6 @@ var repeat_click = __webpack_require__(30);
 
       this.modifyDateField(label, now);
       this.adjustSpinner(label, now);
-      this.$nextTick(function () {
-        return _this3.emitSelectRange(_this3.currentScrollbar);
-      });
     },
     amPm: function amPm(hour) {
       var shouldShowAmPm = this.amPmMode.toLowerCase() === 'a';
@@ -2452,7 +2445,7 @@ module.exports = require("vue");
 
 /***/ }),
 
-/***/ 76:
+/***/ 71:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

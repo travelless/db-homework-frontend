@@ -124,17 +124,10 @@
         hasCheckedFormat: 'تاللانغىنى {checked}/{total} تۈر'
       },
       image: {
-        error: 'مەغلۇب بولدى'
+        error: 'FAILED' // to be translated
       },
       pageHeader: {
-        title: 'قايتىش'
-      },
-      popconfirm: {
-        confirmButtonText: 'ھەئە',
-        cancelButtonText: 'ياق'
-      },
-      empty: {
-        description: 'ئۇچۇر يوق'
+        title: 'Back' // to be translated
       }
     }
   };

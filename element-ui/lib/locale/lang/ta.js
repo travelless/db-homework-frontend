@@ -113,13 +113,6 @@ exports.default = {
     },
     pageHeader: {
       title: 'Back' // to be translated
-    },
-    popconfirm: {
-      confirmButtonText: 'Yes', // to be translated
-      cancelButtonText: 'No' // to be translated
-    },
-    empty: {
-      description: 'தரவு இல்லை'
     }
   }
 };
